@@ -1,8 +1,8 @@
-﻿import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, ArrowRight, Sun, ShieldCheck } from 'lucide-react';
 import { COMPANY_INFO } from '../config/images';
 
-export default function Navbar({ activePage, setActivePage, onOpenAuditModal }) {
+export default function Navbar({ activePage, setActivePage, onOpenAuditModal, isOnamBannerVisible }) {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -37,7 +37,9 @@ export default function Navbar({ activePage, setActivePage, onOpenAuditModal }) 
   return (
     <>
       <header
-        className={`fixed top-0 inset-x-0 z-50 transition-all duration-300 ${
+        className={`fixed inset-x-0 z-50 transition-all duration-300 ${
+          isOnamBannerVisible ? 'top-24 sm:top-16' : 'top-0'
+        } ${
           isScrolled
             ? 'bg-cream-50/95 backdrop-blur-md shadow-sm py-3 border-b border-forest-900/10'
             : 'bg-cream-50/90 backdrop-blur-sm py-4'
@@ -115,7 +117,7 @@ export default function Navbar({ activePage, setActivePage, onOpenAuditModal }) 
 
       {/* Mobile Drawer Menu */}
       {mobileMenuOpen && (
-        <div className="fixed inset-0 z-40 lg:hidden pt-20 bg-forest-950/98 backdrop-blur-xl flex flex-col justify-between p-6 animate-fadeIn">
+        <div className={`fixed inset-0 z-40 lg:hidden bg-forest-950/98 backdrop-blur-xl flex flex-col justify-between p-6 animate-fadeIn transition-all duration-300 ${isOnamBannerVisible ? 'pt-44' : 'pt-20'}`}>
           <nav className="flex flex-col gap-2">
             {navItems.map((item) => {
               const isActive = activePage === item.id;

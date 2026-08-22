@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import FloatingActions from './components/FloatingActions';
 import EnergyAuditModal from './components/EnergyAuditModal';
 import ProjectLightbox from './components/ProjectLightbox';
+import OnamBanner from './components/OnamBanner';
 
 import HomePage from './pages/HomePage';
 import SolutionsPage from './pages/SolutionsPage';
@@ -19,9 +20,17 @@ export default function App() {
   const [activePage, setActivePage] = useState('home');
   const [isAuditModalOpen, setIsAuditModalOpen] = useState(false);
   const [selectedProject, setSelectedProject] = useState(null);
+  const [isOnamBannerVisible, setIsOnamBannerVisible] = useState(() => {
+    return sessionStorage.getItem('onamBannerDismissed') !== 'true';
+  });
 
   const handleOpenAuditModal = () => {
     setIsAuditModalOpen(true);
+  };
+
+  const handleCloseOnamBanner = () => {
+    setIsOnamBannerVisible(false);
+    sessionStorage.setItem('onamBannerDismissed', 'true');
   };
 
   const handleCloseAuditModal = () => {
@@ -37,13 +46,19 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-cream-100 text-charcoal-900 flex flex-col selection:bg-gold-400 selection:text-forest-950 font-sans">
+    <div className={`min-h-screen bg-cream-100 text-charcoal-900 flex flex-col selection:bg-gold-400 selection:text-forest-950 font-sans transition-all duration-300 ${isOnamBannerVisible ? 'pt-24 sm:pt-16' : ''}`}>
       
+      {/* Onam Greeting Banner */}
+      {isOnamBannerVisible && (
+        <OnamBanner onClose={handleCloseOnamBanner} />
+      )}
+
       {/* Top Fixed Navbar */}
       <Navbar
         activePage={activePage}
         setActivePage={setActivePage}
         onOpenAuditModal={handleOpenAuditModal}
+        isOnamBannerVisible={isOnamBannerVisible}
       />
 
       {/* Main Page Routing */}
