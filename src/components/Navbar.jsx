@@ -23,6 +23,7 @@ export default function Navbar({ activePage, setActivePage, onOpenAuditModal, is
     { id: 'solutions', label: 'Solutions' },
     { id: 'services', label: 'Services' },
     { id: 'projects', label: 'Projects' },
+    { id: 'photos', label: 'Photos' },
     { id: 'about', label: 'About' },
     { id: 'faq', label: 'FAQ' },
     { id: 'contact', label: 'Contact' }

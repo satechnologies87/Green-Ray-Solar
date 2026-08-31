@@ -13,6 +13,7 @@ import ProjectsPage from './pages/ProjectsPage';
 import AboutPage from './pages/AboutPage';
 import FAQPage from './pages/FAQPage';
 import ContactPage from './pages/ContactPage';
+import PhotosPage from './pages/PhotosPage';
 
 import { REAL_PROJECTS } from './config/images';
 
@@ -90,6 +91,10 @@ export default function App() {
             onSelectProject={handleSelectProject}
             onOpenAuditModal={handleOpenAuditModal}
           />
+        )}
+
+        {activePage === 'photos' && (
+          <PhotosPage />
         )}
 
         {activePage === 'about' && (
