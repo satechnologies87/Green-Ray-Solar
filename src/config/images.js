@@ -1,4 +1,4 @@
-﻿/**
+/**
  * GREEN RAY SOLAR SOLUTIONS
  * Centralized Image Configuration & Asset Slot Management
  * 
@@ -264,6 +264,29 @@ export const REAL_PROJECTS = [
     src: '/images/greenray/project-commercial-3.jpeg',
     alt: 'Green Ray commercial roof solar installation',
     description: 'Commercial facility solar system with real-time performance monitoring.'
+  }
+];
+
+export const PROJECT_VIDEOS = [
+  {
+    id: 'vid-01',
+    title: 'Residential On-Grid Solar Installation Walkthrough',
+    category: 'Residential Solar',
+    location: 'Kottayam, Kerala',
+    capacity: '5 kW On-Grid',
+    videoSrc: '/videos/greenray/project-video-1.mp4',
+    posterSrc: '/images/greenray/residential-solar-system.jpeg',
+    description: 'On-site vertical walkthrough showcasing rooftop panel layout, inverter cabling, and KSEB bidirectional net meter setup for an independent Kerala home.'
+  },
+  {
+    id: 'vid-02',
+    title: 'Residential Villa Solar System Reel & Tour',
+    category: 'Residential Solar',
+    location: 'Kerala',
+    capacity: '3 kW Rooftop',
+    videoSrc: '/videos/greenray/project-video-2.mp4',
+    posterSrc: '/images/greenray/project-residential-1.jpeg',
+    description: 'Complete site tour of a residential rooftop solar array, customized structural fabrication, and high-efficiency daily power generation.'
   }
 ];
 

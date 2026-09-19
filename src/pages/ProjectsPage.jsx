@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
-import { Sun, Filter, ArrowRight, ShieldCheck } from 'lucide-react';
+import { Sun, Filter, ArrowRight, ShieldCheck, Video, PlayCircle } from 'lucide-react';
 import ProjectCard from '../components/ProjectCard';
-import { REAL_PROJECTS, COMPANY_INFO } from '../config/images';
+import ProjectVideoCard from '../components/ProjectVideoCard';
+import { REAL_PROJECTS, PROJECT_VIDEOS, COMPANY_INFO } from '../config/images';
 
 export default function ProjectsPage({ onSelectProject, onOpenAuditModal }) {
   const [activeFilter, setActiveFilter] = useState('all');
@@ -39,11 +40,48 @@ export default function ProjectsPage({ onSelectProject, onOpenAuditModal }) {
         </div>
       </section>
 
-      {/* Filter Tabs & Gallery */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
         
-        {/* Filter Controls */}
-        <div className="flex flex-wrap items-center gap-2 sm:gap-3 mb-10 pb-4 border-b border-forest-900/10">
+        {/* ── Featured Video Walkthroughs Section (9:16 Portrait Reels) ─── */}
+        <section className="space-y-8">
+          <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 border-b border-forest-900/10 pb-4">
+            <div>
+              <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-forest-800 mb-1">
+                <Video className="w-4 h-4 text-gold-500" />
+                <span>9:16 Residential Site Walkthroughs</span>
+              </div>
+              <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-forest-950">
+                Watch Our Residential Installations In Action
+              </h2>
+            </div>
+            <p className="text-xs text-charcoal-600 max-w-sm">
+              Real vertical site walkthroughs showing rooftop mounting, inverter synchronization, and clean finishes for Kerala homes.
+            </p>
+          </div>
+
+          {/* 2-Video Responsive 9:16 Portrait Grid */}
+          <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12 justify-center">
+            {PROJECT_VIDEOS.map((video) => (
+              <ProjectVideoCard key={video.id} video={video} />
+            ))}
+          </div>
+        </section>
+
+        {/* ── Photo Gallery Section ─────────────────────────────────── */}
+        <section className="space-y-8">
+          <div>
+            <div className="inline-flex items-center gap-2 text-xs font-extrabold uppercase tracking-wider text-forest-800 mb-1">
+              <Sun className="w-4 h-4 text-gold-500" />
+              <span>Installation Photo Gallery</span>
+            </div>
+            <h2 className="text-2xl sm:text-3xl font-extrabold font-display text-forest-950">
+              Verified Project Photographs
+            </h2>
+          </div>
+
+          {/* Filter Controls */}
+          <div className="flex flex-wrap items-center gap-2 sm:gap-3 pb-2">
           {categories.map((cat) => {
             const isSelected = activeFilter === cat.id;
             return (
@@ -72,6 +110,7 @@ export default function ProjectsPage({ onSelectProject, onOpenAuditModal }) {
             />
           ))}
         </div>
+        </section>
 
         {/* Callout Card */}
         <div className="mt-16 bg-forest-900 rounded-3xl p-8 sm:p-12 text-cream-50 flex flex-col md:flex-row items-center justify-between gap-8 border border-forest-800 shadow-xl">
